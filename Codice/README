@@ -1,0 +1,103 @@
+README
+
+######################################################
+
+Readme structure:
+
+####Directory####
+General comment on scripts contained in this directory.
+
+#script.m
+Comment on specified script.m.
+
+######################################################
+
+
+
+
+####Dimensioning####
+The scripts in this directory implement the best waveform design algorithms 
+for both frequency time analysis and range time analysis.
+
+#Design_f_t_helic_2dfft.m
+#Design_f_t_quad_2dfft.m
+By set up the input drone (quad = quadopter, helic = helicopter) and radar parameters the algorithm return as output 
+the final best radar and waveform parameters for each possible STFT window width with NO overlapping among windows.
+
+#Design_f_t_helicopter.m
+#Design_f_t_quadcopter.m
+By set up the input drone (quad = quadopter, helic = helicopter) and radar parameters the algorithm return as output 
+the best radar and waveform parameters for each possible STFT window width with 50% overlapping among windows.
+
+#Design_rho_t_helicopter.m
+#Design_rho_t_quadcopeter.m
+By set up the input drone (quad = quadopter, helic = helicopter) and radar parameters the algorithm return as output 
+the best radar and waveform parameters for the range-time analysis.
+
+#FMCW_parameters.m
+By setting the radar working frequency and range resolution, returns in output the necessary sampling freqeuncy 
+and chirp duration in order to avoid range cell migration. Returns also the chirp values that involve range
+cell migration and the value of that migration.
+
+
+
+
+####Drone received signal####
+The scripts in this directory simulate the received signal from drone, and then the typical FMCW radar processing is applied
+and both the range profile and the spectrogram are obtained.
+
+#erfz.m
+Error function matlab implementation.
+
+#helicopter_drone_simulator.m
+#quadcopter_drone_simulator.m
+Simulated drone's received signal with Chen and Kulpa model. (Ligresti code adapted to FMCW radar).
+
+#integrale_pala_prova.m
+Simulation of the received signal from drone trying to make the integral of each infinitesimal rotor blade contribution. (The obtained result is not as we expect).
+
+#received_signal_helic_ft_no_overlap.m
+#received_signal_quad_ft_no_overlap.m
+Simulation of drone's received signal with defined thesis model. Then on the received signal the FMCW 2DFFT processing is perfomed 
+with no overlap among windwos on the second FFT cycle. The freqeuncy-time observation is obtained.
+
+#spectrogram_overlap_N_mezzi.m
+Simulation of drone's received signal with defined thesis model. Then on the received signal the FMCW 2DFFT processing is perfomed 
+with 50% of overlap among windwos on the second FFT cycle. The freqeuncy-time observation is obtained.
+
+#spectogram_overlap_75_percent.m
+Simulation of drone's received signal with defined thesis model. Then on the received signal the FMCW 2DFFT processing is perfomed 
+with 75% of overlap among windwos on the second FFT cycle. The freqeuncy-time observation is obtained.
+
+#received_signal_helic_rho_t.m
+#received_signal_quad_rho_t.m
+Simulation of drone's received signal with defined thesis model. Then on the received signal the Range-Time 
+plane is constructed.
+
+
+
+
+####Range migration effect####
+Some calculations about the range migration effect in order to visualize how the chirp duration determines 
+the occurrence of this effect.	
+
+#range_migration_helicopter
+#range_migration_quadcopter
+Simulation of theoretical formulas of range variations of rotor blade (circular motion), visualization of the characteristic range trend in the presence of the migration effect and not.
+
+
+
+
+####Surveillance Radar Equation####
+Implementation of radar surveillance equation in generic case and in FMCW radar case in order to obtain some unkonw parameters given 
+other parameters.
+
+#cw_surveillance_radar_equation.m
+Continuous wave radar surveillance equation, computation of radar parameters given the known ones.
+
+#mean_power_requirements.m
+Computation of mean power required from a FMCW radar given as input all the other radar parameters.
+
+#radar_surveillance_equation.m
+Generic radar surveillance equation implementation.
+
