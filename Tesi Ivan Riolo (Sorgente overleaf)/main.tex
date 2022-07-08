@@ -1,0 +1,158 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[centertags]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{newlfont}
+\usepackage{fancyhdr}
+\usepackage{tesisty}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{subfig}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{url}
+\usepackage{lscape}
+
+%-------------------------------
+% DEFINIZIONE DEGLI ENVIRONMENT
+%-------------------------------
+
+\newtheorem{obs}{Osservazione}[section]
+\newenvironment{oss}
+    {\begin{obs}\begin{normalfont}}
+    {\hfill $\square \!\!\!\!\checkmark$ \end{normalfont}\end{obs}}
+
+\newtheorem{pro}{Problema}[chapter]
+\newenvironment{prob}
+    {\begin{pro}\begin{normalfont}}
+    {\hfill $\spadesuit$ \end{normalfont}\end{pro}}
+
+\newtheorem{teor}{Teorema}[section]
+\newenvironment{teorema}
+    {\begin{teor}\textit }
+    {\hfill  \end{teor}}
+
+\newtheorem{defn}{Definizione}[section]
+\newenvironment{de}
+    {\begin{defn}\begin{normalfont}}
+    {\hfill $\clubsuit$ \end{normalfont}\end{defn}}
+
+%-----------------------------
+% CONFIGURAZIONE DELLA PAGINA
+%-----------------------------
+
+\hfuzz2pt % Don't bother to report over-full boxes if over-edge is < 2pt
+
+\fancypagestyle{plain}{
+\fancyhead{}\renewcommand{\headrulewidth}{0pt} } \pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\small CAP. \thechapter \textit{ #1}} {} }
+\renewcommand{\sectionmark}[1]{\markright{\small  \thesection \textit{ #1}} {} }
+\voffset=-20pt    % distanza tra il limite superiore del foglio e l'intestazione
+\headsep=40pt     % distanza  l'intestazione ed il testo del corpo
+\hoffset=0 pt     % misura equivalente al margine sinistro
+\textheight=620pt % altezza del corpo del testo
+\textwidth=435pt  % larghezza del corpo del testo
+\footskip=40pt    % distanza tra il testo del corpo ed il pie' di pagina
+\fancyhead{}      % cancella qualsiasi impostazione per l'intestazione
+\fancyfoot{}      % cancella qualsiasi impostazione per il pie' di pagina
+\headwidth=435pt  % larghezza del'intestazione e del pie' di pagina
+\fancyhead[R]{\rightmark} \fancyfoot[L]{\leftmark}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}   % spessore della linea dell'intestazione
+\renewcommand{\footrulewidth}{0.3pt}   % spessore della linea del pi�di pagina
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+
+ 
+\begin{document}
+
+
+\dedicate{'Crescat scientia vita excolatur'}
+
+\corso{ICT and Internet Engineering} 
+\titoloTesi{Analysis of drone's micro-Doppler signature with FMCW radars}
+\anno{A.A. 2020/2021}
+\relatore{Prof. Mauro Leonardi}
+\autore{Ivan Riolo}
+\matricola{}
+%\correlatore{Correlatore}
+\baselineskip=25pt
+\intestazione
+%------------------------------------------------
+% INTRODUZIONE E RINGRAZIAMENTI (NON MODIFICARE)
+%------------------------------------------------
+
+\fancypagestyle{plain}{
+\fancyhead{}\renewcommand{\headrulewidth}{0pt} } \pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\small Cap. \thechapter \textit{ #1}} {} }
+\renewcommand{\sectionmark}[1]{\markright{\small  \S \thesection \textit{ #1}} {} }
+\voffset=-20pt                         % distanza tra il limite superiore del foglio e l'intestazione
+\headsep=40pt                          % distanza  l'intestazione ed il testo del corpo
+\hoffset=0pt                           % misura equivalente al margine sinistro
+\textheight=620pt                      % altezza del corpo del testo
+\textwidth=435pt                       % larghezza del corpo del testo
+\footskip=40pt                         % distanza tra il testo del corpo ed il pie' di pagina
+\fancyhead{}                           % cancella qualsiasi impostazione per l'intestazione
+\fancyfoot{}                           % cancella qualsiasi impostazione per il pie' di pagina
+\headwidth=435pt                       % larghezza del'intestazione e del pie' di pagina
+\fancyhead[R]{\rightmark} \fancyfoot[L]{\leftmark}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}   % spessore della linea dell'intestazione
+\renewcommand{\footrulewidth}{0.3pt}   % spessore della linea del pi�di pagina
+
+\pagenumbering{Roman} \tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+
+\fancyhead[R]{Introduzione} \fancyfoot[L]{Introduzione}
+\fancyfoot[R]{\thepage}
+
+\include{Introduzione}
+
+\fancyhf{} %elimina header/footer vecchi
+
+
+\fancyhead[R]{\rightmark} \fancyhead[L]{\leftmark}
+\fancyfoot[R]{\thepage}
+
+
+
+%---------------------
+% INCLUSIONE CAPITOLI
+%---------------------
+
+
+%capitolo1
+\input{Introduction-chap1/intro}
+
+%capitolo2
+\input{Radar solutions-chap2/radar solutions}
+
+%capitolo3
+\input{Time-frequency analysis-chap3/mD analysis in radar}
+
+%capitolo4
+\input{FMCW mD analysis-chap4/mD with FMCW}
+
+%capitolo5
+\input{final-chap5/conclusion}
+
+
+
+\bibliographystyle{unsrt}
+%  \bibliographystyle{ieeetr}
+% \bibliographystyle{abbrv}
+
+\listoffigures
+\listoftables
+\bibliography{biblio}
+
+\end{document}

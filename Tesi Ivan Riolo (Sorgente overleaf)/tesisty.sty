@@ -1,0 +1,116 @@
+% contiene alcune definizioni personali
+%\documentclass[12pt,titlepage]{report}
+%\usepackage[italian]{babel}
+
+
+
+\def\anno#1{\gdef\@anno{#1}}
+\def\corso#1{\gdef\@corso{#1}}
+\def\ciclo#1{\gdef\@ciclo{#1}}
+\def\titoloTesi#1{\gdef\@titoloTesi{#1}}
+
+\def\autore#1{\gdef\@autore{#1}}
+\def\matricola#1{\gdef\@matricola{#1}}
+
+\def\relatore#1{\gdef\@relatore{#1}}
+\def\correlatore#1{\gdef\@correlatore{#1}}
+
+
+ \def\@anno{}
+ \def\@corso{}
+ \def\@ciclo{}
+ \def\@titoloTesi{}
+ \def\@autore{}
+ \def\@matricola{}
+ \def\@relatore{}
+ \def\@correlatore{}
+
+ \def\dedicate#1{\dedic@tiontrue\gdef\dedication@text{#1}}
+ \newif\ifdedic@tion     \dedic@tionfalse
+
+ \textheight=20.cm       % altezza testo
+ \textwidth=15.5cm       % larghezza testo
+ \oddsidemargin=0.5cm    % margini
+ \topmargin=0.25cm
+%\hspace{-1.15cm}
+ \title{{\huge{\textbf{UNIVERSIT\`A DEGLI STUDI DI ROMA TOR VERGATA}}\vspace{2 cm}
+        \\
+        \Large{FACOLT\`A DI INGEGNERIA} \\ \vspace{1.5cm}
+        
+        \large{Tesi di Laurea Magistrale in \@corso  \vspace{1 cm}\\
+        \textbf{}} \vspace{0.5cm}\\
+        \large{\textbf{\@titoloTesi}}}\\
+        \vspace{1 cm}
+        \textbf{ \hspace{0.5cm} \@matricola}\\ \@anno}
+       
+    
+
+
+\def\intestazione{
+    \thispagestyle{empty}
+    \vspace*{-3cm}\parbox{0cm}{}
+    \begin{figure}[H]
+    \begin{center}
+    \includegraphics[height= 2cm]{imgs/ulogo.png}
+    \end{center}
+    \end{figure}
+    \begin{center}
+        \hyphenpenalty=10000{\Large\expandafter{\@title}}
+    \end{center}
+    \vfill
+
+    \vspace{40pt}
+
+    {\large \rm
+
+%     \begin{tabbing}
+%     \textbf{RELATORE} \= \hspace{7cm} \= \hfill \textbf{CANDIDATO}\\ \\
+%     \@relatore \>  \> \@autore\\
+%     \> \> \@matricola
+%     \end{tabbing}
+
+    \begin{tabbing}
+    \text{Candidato:} \@autore
+    \end{tabbing}
+    \begin{tabbing}
+    \text{Relatore:} \@relatore
+    \end{tabbing}}
+
+    \newpage
+
+    \ifdedic@tion
+        \newpage{\thispagestyle{empty}\normalsize\em\null\vskip1in\noindent
+        \dedication@text}
+
+        \vfill
+    \fi
+    \newpage
+ }
+
+
+\newenvironment{dedication}{\Large\em\null\vskip1in}%
+{\vfill}
+
+\renewcommand{\chaptermark}[1]{\markboth{\small CAP. \thechapter \textit{ ##1}} {} }
+\renewcommand{\sectionmark}[1]{\markright{\small  \thesection \textit{ ##1}} {} }
+\renewcommand{\headrulewidth}{0.3pt}   % spessore della linea dell'intestazione
+
+\renewcommand{\footrulewidth}{0.3pt}   % spessore della linea del pi�di pagina
+
+\def\impaginazione{
+ \fancypagestyle{plain}{
+ \fancyhead{}\renewcommand{\headrulewidth}{0pt} } \pagestyle{fancy}
+ \voffset=-20pt                         % distanza tra il limite superiore del foglio e l'intestazione
+ \headsep=40pt                          % distanza  l'intestazione ed il testo del corpo
+ \hoffset=0pt                           % misura equivalente al margine sinistro
+ \textheight=620pt                      % altezza del corpo del testo
+ \textwidth=435pt                       % larghezza del corpo del testo
+ \footskip=40pt                         % distanza tra il testo del corpo ed il pie' di pagina
+
+ \fancyhead{}                           % cancella qualsiasi impostazione per l'intestazione
+ \fancyfoot{}                           % cancella qualsiasi impostazione per il pie' di pagina
+ \headwidth=435pt                       % larghezza del'intestazione e del pie' di pagina
+ \fancyhead[R]{\rightmark} \fancyfoot[L]{\leftmark}
+ \fancyfoot[R]{\thepage}
+}
+
